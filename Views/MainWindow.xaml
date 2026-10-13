@@ -1,0 +1,122 @@
+<Window x:Class="WindowsDeveloperInterview.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Windows Developer Interview" Icon="../Assets/app-icon.ico" Height="780" Width="940"
+        MinHeight="620" MinWidth="780" Background="#F5F7FC"
+        FontFamily="Segoe UI" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#635BFF"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#16B8A6"/>
+        <Style TargetType="GroupBox">
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#e1f5fe"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#28324A"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="Padding" Value="9,7"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#F9FAFD"/>
+            <Setter Property="BorderBrush" Value="#D8DEEC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Foreground" Value="#25304A"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="16,8"/>
+            <Setter Property="MinWidth" Value="90"/>
+            <Setter Property="Background" Value="#01579b"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Padding="28,22" Margin="0,0,0,18">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#01579b" Offset="0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel>
+                <TextBlock FontSize="28" FontWeight="Bold" Foreground="White" Text="Windows Developer Interview"/>
+            </StackPanel>
+        </Border>
+
+        <Border DockPanel.Dock="Bottom" Margin="24,8,24,20" Padding="16" Background="White"
+                BorderBrush="#e1f5fe" BorderThickness="1" CornerRadius="8">
+            <DockPanel>
+                <Button DockPanel.Dock="Left" Background="#4fc3f7"
+                        Content="Run tests" Click="RunTests_Click"/>
+                <TextBlock x:Name="StatusText" Margin="18,0,0,0" FontWeight="SemiBold"
+                           VerticalAlignment="Center" TextWrapping="Wrap"/>
+            </DockPanel>
+        </Border>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="24,0,16,0">
+            <StackPanel>
+                <GroupBox Header="1. Valid brackets">
+                    <Grid>
+                        <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <TextBox x:Name="BracketsInput" Text="{}{[()]}"/>
+                        <Button Grid.Column="1" Content="Validate" Click="ValidateBrackets_Click"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="2. Natural sort (comma-separated items)">
+                    <Grid>
+                        <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <TextBox x:Name="NaturalSortInput" Text="file10, file2, file1"/>
+                        <Button Grid.Column="1" Content="Sort" Click="NaturalSort_Click"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="3. Autocomplete">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/><ColumnDefinition/><ColumnDefinition Width="80"/><ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="SearchInput" Text="app" ToolTip="Search text"/>
+                        <TextBox x:Name="AutocompleteItemsInput" Grid.Column="1" Text="apple, pineapple, app, snapple" ToolTip="Comma-separated items"/>
+                        <TextBox x:Name="MaxResultsInput" Grid.Column="2" Text="3" ToolTip="Maximum results"/>
+                        <Button Grid.Column="3" Content="Search" Click="Autocomplete_Click"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="4. Roman numerals">
+                    <Grid>
+                        <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <TextBox x:Name="NumberInput" Text="1994" ToolTip="Integer from 1 to 3999"/>
+                        <Button Grid.Column="1" Margin="0,0,16,0" Content="Convert To Roman" Click="ToRoman_Click"/>
+                        <TextBox x:Name="RomanInput" Grid.Column="2" Text="MCMXCIV" ToolTip="Canonical Roman numeral"/>
+                        <Button Grid.Column="3" Content="Convert To number" Click="FromRoman_Click"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="5. Sort digits descending">
+                    <Grid>
+                        <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <TextBox x:Name="DigitsInput" Text="42145"/>
+                        <Button Grid.Column="1" Content="Sort digits" Click="SortDigits_Click"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="6. Tribonacci">
+                    <Grid>
+                        <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="100"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <TextBox x:Name="SignatureInput" Text="0, 1, 1" ToolTip="Three comma-separated integers"/>
+                        <TextBox x:Name="TribonacciLengthInput" Grid.Column="1" Text="10" ToolTip="Output length"/>
+                        <Button Grid.Column="2" Content="Generate" Click="Tribonacci_Click"/>
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>
