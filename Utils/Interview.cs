@@ -6,6 +6,7 @@ namespace WindowsDeveloperInterview;
 
 public static class Interview
 {
+    //ข้อสอบสัมภาษณ์ที่ 1: ตรวจสอบความถูกต้องของวงเล็บ
     public static bool IsValidBrackets(string input)
     {
         if (string.IsNullOrEmpty(input))
@@ -40,7 +41,7 @@ public static class Interview
         }
         return res.Count == 0;
     }
-
+    //ข้อสอบสัมภาษณ์ที่ 2: จัดเรียงตัวอักษร
     public static string[] NaturalSort(IEnumerable<string> items)
     {
         if (items is null)
@@ -48,7 +49,7 @@ public static class Interview
 
         return items.OrderBy(x => x, NaturalStringComparer.Instance).ToArray();
     }
-
+    //ข้อสอบสัมภาษณ์ที่ 3: ค้นหาคำ
     public static string[] Autocomplete(string search, IEnumerable<string> items, int maxResult)
     {
         if (search is null)
@@ -80,13 +81,14 @@ public static class Interview
             .ToArray();
     }
 
+   //ข้อสอบสัมภาษณ์ที่ 4: แปลงตัวเลขเป็นเลขโรมัน
     private static readonly (int Value, string Symbol)[] RomanTokens =
     {
         (1000, "M"), (900, "CM"), (500, "D"), (400, "CD"),
         (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
         (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")
     };
-
+    
     public static string ToRoman(int number)
     {
         if (number is < 1 or > 3999)
@@ -146,7 +148,7 @@ public static class Interview
 
         return sum;
     }
-
+    //ข้อสอบสัมภาษณ์ที่ 5: จัดเรียงตัวเลขจากมากไปน้อย
     public static int SortDigitsDescending(int number)
     {
         if (number <= 0) throw new InterviewException("Number must be greater than zero.");
@@ -162,6 +164,7 @@ public static class Interview
         return result;
     }
 
+    //ข้อสอบสัมภาษณ์ที่ 6: Tribonacci
     public static int[] Tribonacci(int[] signature, int n)
     {
         if (signature is null)
